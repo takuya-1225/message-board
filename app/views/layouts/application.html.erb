@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
+    <!-- yieldというRubyコードによってbody要素内に埋め込まれるページが切り替わる -->
+    <!-- <%= yield %>があるところにindex.html.erbなどの各ページ内容が代入される-->
+      <%= yield %>
+    <!--↑のおかげでbody要素内以外は共通化されbody要素内は
+    アクセスされたページ毎のコンテンツが切り替えられて表示される-->
+    <div>
   </body>
+  
 </html>
