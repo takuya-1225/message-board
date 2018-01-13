@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   def index
-    @messages = Message.all
+    @messages = Message.order(created_at: :desc).page(params[:page])
   end
   
   def show
@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
   end
   
   def update
+    binding.pry
     if @massage.update(message_params)
       flash[:success] = 'メッセージは正常に更新されました'
       redirect_to @message
